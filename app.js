@@ -5,9 +5,11 @@ let currentFichaData = {};
 let session = 1;
 let exerciseIdx = 0;
 let timeLeft = 5;
+let phaseDuration = 5;
 let isResting = false;
 let isSessionRest = false;
 let isPreparing = true;
+let isPaused = false;
 let timerInterval;
 let selectedFicha = "";
 
@@ -24,7 +26,7 @@ function playBeep(freq, duration, type = "sine") {
   gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
   gain.gain.exponentialRampToValueAtTime(
     0.0001,
-    audioCtx.currentTime + duration
+    audioCtx.currentTime + duration,
   );
   osc.start();
   osc.stop(audioCtx.currentTime + duration);
@@ -91,7 +93,11 @@ function startCountdown() {
     "VOLTA: <span id='current-session'>1</span>/" + dbConfig.voltasTotal;
 
   isPreparing = true;
+  isPaused = false;
+  session = 1;
+  exerciseIdx = 0;
   timeLeft = dbConfig.preparo;
+  phaseDuration = dbConfig.preparo;
   runTimer();
 }
 
@@ -139,6 +145,7 @@ function handleTransition() {
   if (isPreparing) {
     isPreparing = false;
     timeLeft = getTempoAtividade();
+    phaseDuration = timeLeft;
     playBeep(880, 0.5);
     return;
   }
@@ -148,6 +155,7 @@ function handleTransition() {
     isResting = false;
     exerciseIdx = 0;
     timeLeft = getTempoAtividade();
+    phaseDuration = timeLeft;
     playBeep(880, 0.8);
   } else if (!isResting) {
     if (exerciseIdx === currentWorkout.length - 1) {
@@ -158,16 +166,19 @@ function handleTransition() {
       }
       isSessionRest = true;
       timeLeft = dbConfig.descansoEntreVoltas;
+      phaseDuration = timeLeft;
       playBeep(660, 1);
     } else {
       isResting = true;
       timeLeft = getTempoDescanso();
+      phaseDuration = timeLeft;
       playBeep(330, 0.5);
     }
   } else {
     isResting = false;
     exerciseIdx++;
     timeLeft = getTempoAtividade();
+    phaseDuration = timeLeft;
     playBeep(880, 0.5);
   }
 }
@@ -182,11 +193,11 @@ function updateDisplay() {
   timeDisplay.innerText = timeLeft;
   document.getElementById("current-session").innerText = Math.min(
     session,
-    dbConfig.voltasTotal
+    dbConfig.voltasTotal,
   );
   document.getElementById("current-ex-num").innerText = Math.min(
     exerciseIdx + 1,
-    currentWorkout.length
+    currentWorkout.length,
   );
 
   if (isPreparing) {
@@ -206,6 +217,68 @@ function updateDisplay() {
     exDisplay.innerText = currentWorkout[exerciseIdx];
     timerVisual.className = "timer-circle working";
   }
+
+  updateProgressBar();
+}
+
+function togglePause() {
+  isPaused = !isPaused;
+  const btn = document.getElementById("btn-pause");
+  if (isPaused) {
+    clearInterval(timerInterval);
+    btn.innerText = "Retomar";
+    btn.classList.add("paused");
+  } else {
+    btn.innerText = "Pausar";
+    btn.classList.remove("paused");
+    runTimer();
+  }
+}
+
+function cancelWorkout() {
+  if (confirm("Cancelar o treino atual?")) {
+    location.reload();
+  }
+}
+
+function repeatWorkout() {
+  clearInterval(timerInterval);
+  isPaused = false;
+  isResting = false;
+  isSessionRest = false;
+  isPreparing = true;
+  session = 1;
+  exerciseIdx = 0;
+  timeLeft = dbConfig.preparo;
+  phaseDuration = dbConfig.preparo;
+  document.getElementById("btn-pause").innerText = "Pausar";
+  document.getElementById("btn-pause").classList.remove("paused");
+  document.getElementById("current-session").parentElement.innerHTML =
+    "VOLTA: <span id='current-session'>1</span>/" + dbConfig.voltasTotal;
+  runTimer();
+}
+
+function updateProgressBar() {
+  const elapsed = phaseDuration - timeLeft;
+  const pct = phaseDuration > 0 ? Math.min(elapsed / phaseDuration, 1) : 0;
+  const bar = document.getElementById("progress-bar-fill");
+  if (!bar) return;
+
+  // Interpolate color: red (0%) → yellow (50%) → green (100%)
+  let r, g, b;
+  if (pct < 0.5) {
+    const t = pct / 0.5;
+    r = 231;
+    g = Math.round(76 + t * (193 - 76));
+    b = 60;
+  } else {
+    const t = (pct - 0.5) / 0.5;
+    r = Math.round(231 + t * (39 - 231));
+    g = Math.round(193 + t * (174 - 193));
+    b = Math.round(60 + t * (96 - 60));
+  }
+  bar.style.width = pct * 100 + "%";
+  bar.style.background = `rgb(${r},${g},${b})`;
 }
 
 function finishWorkout() {
@@ -214,6 +287,7 @@ function finishWorkout() {
   setTimeout(() => playBeep(1100, 0.5), 200);
   alert("Treino Concluído com Sucesso!");
   location.reload();
+  return null;
 }
 
 window.onload = carregarTreinos;

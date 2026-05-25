@@ -157,3 +157,69 @@ button {
   border-color: #f1c40f;
   color: #f1c40f;
 }
+
+/* Barra de progresso */
+.progress-bar-track {
+  width: 100%;
+  height: 10px;
+  background: #eee;
+  border-radius: 5px;
+  margin: 14px 0 4px;
+  overflow: hidden;
+}
+#progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 5px;
+  background: #e74c3c;
+  transition: width 0.8s linear, background 0.8s linear;
+}
+
+/* Botões de ação do timer */
+.timer-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 18px;
+}
+.timer-actions button {
+  flex: 1;
+  padding: 0.8rem 0.4rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+}
+.btn-pause {
+  background: var(--accent);
+  color: white;
+}
+.btn-pause.paused {
+  background: #f39c12;
+}
+.btn-repeat {
+  background: var(--success);
+  color: white;
+}
+.btn-cancel {
+  background: #f1f1f1;
+  color: #7f8c8d;
+}
+.btn-cancel:hover {
+  background: #e0e0e0;
+}
+
+@media (max-width: 480px) {
+  .progress-bar-track {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 14px;
+    border-radius: 0;
+    margin: 0;
+    z-index: 100;
+  }
+  #progress-bar-fill {
+    border-radius: 0;
+    transition: width 0.8s linear, background 0.8s linear;
+  }
+}

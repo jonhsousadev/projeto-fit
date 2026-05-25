@@ -38,6 +38,10 @@
           <div id="time-left">5</div>
         </div>
 
+        <div class="progress-bar-track">
+          <div id="progress-bar-fill"></div>
+        </div>
+
         <div class="info-bar">
           <div>VOLTA: <span id="current-session">1</span>/2</div>
           <div>
@@ -45,17 +49,11 @@
           </div>
         </div>
 
-        <button
-          onclick="location.reload()"
-          style="
-            margin-top: 30px;
-            background: #f1f1f1;
-            color: #7f8c8d;
-            width: 100%;
-          "
-        >
-          Cancelar
-        </button>
+        <div class="timer-actions">
+          <button id="btn-pause" class="btn-pause" onclick="togglePause()">Pausar</button>
+          <button class="btn-repeat" onclick="repeatWorkout()">Repetir</button>
+          <button class="btn-cancel" onclick="cancelWorkout()">Cancelar</button>
+        </div>
       </div>
     </div>
 
