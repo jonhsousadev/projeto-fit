@@ -16,12 +16,43 @@
       </div>
 
       <div id="list-screen">
-        <h1 id="list-title">Ficha</h1>
+        <div class="ficha-header">
+          <span id="list-icone" class="ficha-icone"></span>
+          <h1 id="list-title">Ficha</h1>
+        </div>
+
+        <p id="list-descricao" class="ficha-descricao"></p>
+
+        <div class="ficha-stats" id="ficha-stats">
+          <div class="stat-card">
+            <span class="stat-value" id="stat-exercicios">—</span>
+            <span class="stat-label">Exercícios</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="stat-voltas">—</span>
+            <span class="stat-label">Voltas</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="stat-atividade">—</span>
+            <span class="stat-label">Atividade</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="stat-descanso">—</span>
+            <span class="stat-label">Descanso</span>
+          </div>
+        </div>
+
+        <div class="ficha-nivel-row">
+          <span class="ficha-tipo-badge" id="ficha-tipo-badge"></span>
+          <span class="ficha-nivel-badge" id="ficha-nivel-badge"></span>
+        </div>
+
         <ul id="exercise-ul" class="exercise-list"></ul>
+
         <button class="btn-start" onclick="startCountdown()">
-          INICIAR (5s PREPARO)
+          ▶ INICIAR TREINO
         </button>
-        <button class="btn-back" onclick="goBack()">Voltar</button>
+        <button class="btn-back" onclick="goBack()">← Voltar</button>
       </div>
 
       <div id="timer-screen">

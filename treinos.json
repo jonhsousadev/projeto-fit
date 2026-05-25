@@ -19,6 +19,11 @@
       "tipo": "funcional",
       "tempoAtividade": 45,
       "tempoDescanso": 15,
+      "apresentacao": {
+        "descricao": "Treino de força e explosão muscular com halteres e exercícios de peso corporal. Foco em membros inferiores e core.",
+        "nivel": "Intermediário",
+        "icone": "💪"
+      },
       "exercicios": [
         "Agachamento com Halteres",
         "Polichinelo Normal",
@@ -35,6 +40,11 @@
       "tipo": "funcional",
       "tempoAtividade": 45,
       "tempoDescanso": 15,
+      "apresentacao": {
+        "descricao": "Treino de resistência muscular com alta repetição. Ênfase em posterior de coxa, costas e abdômen.",
+        "nivel": "Intermediário",
+        "icone": "🏋️"
+      },
       "exercicios": [
         "Stiff com Halteres",
         "Polichinelo Normal",
@@ -51,6 +61,11 @@
       "tipo": "funcional",
       "tempoAtividade": 45,
       "tempoDescanso": 15,
+      "apresentacao": {
+        "descricao": "Treino completo que trabalha todos os grupos musculares em uma única sessão. Alta intensidade e variedade.",
+        "nivel": "Avançado",
+        "icone": "🔥"
+      },
       "exercicios": [
         "Thrusters",
         "Polichinelo Normal",
@@ -71,6 +86,11 @@
         "work": "CORRIDA",
         "rest": "CAMINHADA"
       },
+      "apresentacao": {
+        "descricao": "Treino intervalado de corrida alternando sprints com recuperação ativa. Excelente para queima de gordura e condicionamento cardiovascular.",
+        "nivel": "Iniciante",
+        "icone": "🏃"
+      },
       "exercicios": [
         "Aquecimento: Trote Leve",
         "Corrida Moderada/Forte",
@@ -90,6 +110,11 @@
       "labels": {
         "work": "CADÊNCIA",
         "rest": "GIRO LEVE"
+      },
+      "apresentacao": {
+        "descricao": "Sessão noturna na bicicleta ergométrica com variações de cadência. Baixo impacto, ideal para recuperação ativa.",
+        "nivel": "Iniciante",
+        "icone": "🚴"
       },
       "exercicios": [
         "Giro Inicial Leve",

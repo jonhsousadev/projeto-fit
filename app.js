@@ -67,13 +67,47 @@ function showList(type) {
 
   document.getElementById("selection-screen").style.display = "none";
   document.getElementById("list-screen").style.display = "block";
-  document.getElementById("list-title").innerText = "Ficha " + type;
 
+  const ap = currentFichaData.apresentacao || {};
+  const icone = ap.icone || "";
+  const descricao = ap.descricao || "";
+  const nivel = ap.nivel || "";
+
+  document.getElementById("list-icone").innerText = icone;
+  document.getElementById("list-title").innerText = currentFichaData.nome.replace(/^[\S]+\s/, "");
+  document.getElementById("list-descricao").innerText = descricao;
+  document.getElementById("list-descricao").style.display = descricao ? "block" : "none";
+
+  // Stats
+  const tempoAtiv = currentFichaData.tipo === "cardio"
+    ? currentFichaData.tempoRitmoNormal
+    : currentFichaData.tempoAtividade;
+  const tempoDesc = currentFichaData.tipo === "cardio"
+    ? currentFichaData.tempoCaminhada
+    : currentFichaData.tempoDescanso;
+
+  document.getElementById("stat-exercicios").innerText = currentWorkout.length;
+  document.getElementById("stat-voltas").innerText = dbConfig.voltasTotal + "x";
+  document.getElementById("stat-atividade").innerText = tempoAtiv + "s";
+  document.getElementById("stat-descanso").innerText = tempoDesc + "s";
+
+  // Badges
+  const tipoBadge = document.getElementById("ficha-tipo-badge");
+  tipoBadge.innerText = currentFichaData.tipo === "cardio" ? "🫀 Cardio" : "🏋️ Funcional";
+  tipoBadge.className = "ficha-tipo-badge tipo-" + currentFichaData.tipo;
+
+  const nivelBadge = document.getElementById("ficha-nivel-badge");
+  nivelBadge.innerText = nivel;
+  nivelBadge.style.display = nivel ? "inline-block" : "none";
+  const nivelClass = { "Iniciante": "nivel-iniciante", "Intermediário": "nivel-intermediario", "Avançado": "nivel-avancado" };
+  nivelBadge.className = "ficha-nivel-badge " + (nivelClass[nivel] || "");
+
+  // Exercise list
   const ul = document.getElementById("exercise-ul");
   ul.innerHTML = "";
-  currentWorkout.forEach((ex) => {
+  currentWorkout.forEach((ex, i) => {
     const li = document.createElement("li");
-    li.innerText = ex;
+    li.innerHTML = `<span class="ex-num">${i + 1}</span><span>${ex}</span>`;
     ul.appendChild(li);
   });
 }
@@ -168,6 +202,12 @@ function handleTransition() {
       timeLeft = dbConfig.descansoEntreVoltas;
       phaseDuration = timeLeft;
       playBeep(660, 1);
+    } else if (currentFichaData.tipo === "cardio") {
+      // Cardio: sem fase de descanso — avança direto para o próximo exercício
+      exerciseIdx++;
+      timeLeft = getTempoAtividade();
+      phaseDuration = timeLeft;
+      playBeep(880, 0.5);
     } else {
       isResting = true;
       timeLeft = getTempoDescanso();

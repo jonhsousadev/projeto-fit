@@ -74,24 +74,123 @@ button {
   display: none;
   text-align: left;
 }
+
+/* Cabeçalho da ficha */
+.ficha-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+.ficha-icone {
+  font-size: 2rem;
+  line-height: 1;
+}
+.ficha-header h1 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+/* Descrição */
+.ficha-descricao {
+  color: #7f8c8d;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+}
+
+/* Cards de stats */
+.ficha-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+.stat-card {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 0.6rem 0.3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.stat-value {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--secondary);
+}
+.stat-label {
+  font-size: 0.7rem;
+  color: #95a5a6;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Badges de tipo e nível */
+.ficha-nivel-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+}
+.ficha-tipo-badge,
+.ficha-nivel-badge {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: bold;
+}
+.tipo-funcional {
+  background: #d5f5e3;
+  color: #1e8449;
+}
+.tipo-cardio {
+  background: #d6eaf8;
+  color: #1a5276;
+}
+.nivel-iniciante {
+  background: #d5f5e3;
+  color: #1e8449;
+}
+.nivel-intermediario {
+  background: #fef9e7;
+  color: #9a7d0a;
+}
+.nivel-avancado {
+  background: #fadbd8;
+  color: #922b21;
+}
+
+/* Lista de exercícios */
 .exercise-list {
   list-style: none;
   padding: 0;
-  margin: 20px 0;
+  margin: 0 0 1rem;
   border-top: 1px solid #eee;
 }
 .exercise-list li {
-  padding: 10px 0;
+  padding: 9px 0;
   border-bottom: 1px solid #eee;
   color: #34495e;
   display: flex;
   align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
 }
-.exercise-list li::before {
-  content: "•";
-  color: var(--primary);
+.ex-num {
+  background: var(--secondary);
+  color: white;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 0.72rem;
   font-weight: bold;
-  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 #timer-screen {
