@@ -1,0 +1,106 @@
+{
+  "config": {
+    "preparo": 5,
+    "voltasTotal": 2,
+    "descansoEntreVoltas": 60,
+    "labels": {
+      "preparar": "PREPARAR",
+      "comecarEm": "COMEÇA EM...",
+      "work": "WORK",
+      "rest": "REST",
+      "volta": "VOLTA",
+      "descansoLongo": "DESCANSO LONGO",
+      "proximo": "PRÓXIMO: "
+    }
+  },
+  "fichas": {
+    "A": {
+      "nome": "📅 Ficha A: Força & Explosão",
+      "tipo": "funcional",
+      "tempoAtividade": 45,
+      "tempoDescanso": 15,
+      "exercicios": [
+        "Agachamento com Halteres",
+        "Polichinelo Normal",
+        "Afundo Alternado",
+        "Soco + Agachamento + Troca",
+        "Flexão de Braço Padrão",
+        "Agachamento com Salto",
+        "Abdominal Curto",
+        "Prancha Alpinista"
+      ]
+    },
+    "B": {
+      "nome": "📅 Ficha B: Resistência",
+      "tipo": "funcional",
+      "tempoAtividade": 45,
+      "tempoDescanso": 15,
+      "exercicios": [
+        "Stiff com Halteres",
+        "Polichinelo Normal",
+        "Agachamento Sumô",
+        "Soco + Agachamento + Troca",
+        "Remada Curvada",
+        "Flexão de Braço Aberta",
+        "Abdominal Remador",
+        "Prancha Tradicional"
+      ]
+    },
+    "C": {
+      "nome": "📅 Ficha C: Full Body",
+      "tipo": "funcional",
+      "tempoAtividade": 45,
+      "tempoDescanso": 15,
+      "exercicios": [
+        "Thrusters",
+        "Polichinelo Normal",
+        "Recuo Alternado",
+        "Soco + Agachamento + Troca",
+        "Flexão Diamante",
+        "Bíceps Martelo",
+        "Abdominal Bicicleta",
+        "Prancha Lateral"
+      ]
+    },
+    "D": {
+      "nome": "🏃‍♂️ Ficha D: Corrida Intervalada",
+      "tipo": "cardio",
+      "tempoRitmoNormal": 60,
+      "tempoCaminhada": 30,
+      "labels": {
+        "work": "CORRIDA",
+        "rest": "CAMINHADA"
+      },
+      "exercicios": [
+        "Aquecimento: Trote Leve",
+        "Corrida Moderada/Forte",
+        "Caminhada de Recuperação",
+        "Corrida Moderada/Forte",
+        "Caminhada de Recuperação",
+        "Corrida Moderada/Forte",
+        "Caminhada de Recuperação",
+        "Desaceleração Final"
+      ]
+    },
+    "E": {
+      "nome": "🚴‍♂️ Ficha E: Ergométrica Noturna",
+      "tipo": "cardio",
+      "tempoRitmoNormal": 60,
+      "tempoCaminhada": 30,
+      "labels": {
+        "work": "CADÊNCIA",
+        "rest": "GIRO LEVE"
+      },
+      "exercicios": [
+        "Giro Inicial Leve",
+        "Giro Constante Moderado",
+        "Giro Rápido (Cadência)",
+        "Giro Constante Moderado",
+        "Giro Rápido (Cadência)",
+        "Giro Constante Moderado",
+        "Giro Rápido (Cadência)",
+        "Desaceleração Relaxante"
+      ]
+    }
+  }
+}

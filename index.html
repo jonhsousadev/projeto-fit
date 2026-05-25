@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Treino 30 Minutos - Elite</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="selection-screen">
+        <h1>Escolha sua Ficha</h1>
+        <div id="menu-dynamic-btns" class="menu-btns">
+          <p>Carregando treinos...</p>
+        </div>
+      </div>
+
+      <div id="list-screen">
+        <h1 id="list-title">Ficha</h1>
+        <ul id="exercise-ul" class="exercise-list"></ul>
+        <button class="btn-start" onclick="startCountdown()">
+          INICIAR (5s PREPARO)
+        </button>
+        <button class="btn-back" onclick="goBack()">Voltar</button>
+      </div>
+
+      <div id="timer-screen">
+        <h2
+          id="current-ficha-header"
+          style="margin: 0; color: #7f8c8d; font-size: 1rem"
+        >
+          ---
+        </h2>
+        <div class="exercise-name" id="exercise-display">Preparar...</div>
+
+        <div class="timer-circle" id="timer-visual">
+          <div id="status-label">READY</div>
+          <div id="time-left">5</div>
+        </div>
+
+        <div class="info-bar">
+          <div>VOLTA: <span id="current-session">1</span>/2</div>
+          <div>
+            EX: <span id="current-ex-num">1</span>/<span id="total-ex-num">8</span>
+          </div>
+        </div>
+
+        <button
+          onclick="location.reload()"
+          style="
+            margin-top: 30px;
+            background: #f1f1f1;
+            color: #7f8c8d;
+            width: 100%;
+          "
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

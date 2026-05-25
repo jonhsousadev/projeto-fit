@@ -1,0 +1,159 @@
+:root {
+  --primary: #e74c3c;
+  --secondary: #2c3e50;
+  --success: #27ae60;
+  --accent: #3498db;
+  --bg: #f4f7f6;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+}
+
+h1 {
+  color: var(--secondary);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.menu-btns {
+  display: grid;
+  gap: 0.8rem;
+}
+
+button {
+  padding: 1rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-choice {
+  background: var(--secondary);
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  padding-left: 1.5rem;
+}
+.btn-choice:hover {
+  background: #34495e;
+}
+.btn-start {
+  background: var(--success);
+  color: white;
+  margin-top: 15px;
+  width: 100%;
+  font-size: 1.3rem;
+}
+.btn-back {
+  background: #95a5a6;
+  color: white;
+  margin-top: 10px;
+  width: 100%;
+}
+
+#list-screen {
+  display: none;
+  text-align: left;
+}
+.exercise-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  border-top: 1px solid #eee;
+}
+.exercise-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  color: #34495e;
+  display: flex;
+  align-items: center;
+}
+.exercise-list li::before {
+  content: "•";
+  color: var(--primary);
+  font-weight: bold;
+  width: 20px;
+}
+
+#timer-screen {
+  display: none;
+}
+
+.timer-circle {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 12px solid #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  transition: border-color 0.3s;
+}
+
+#time-left {
+  font-size: 4rem;
+  font-weight: bold;
+}
+#status-label {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.exercise-name {
+  font-size: 1.6rem;
+  color: var(--secondary);
+  font-weight: bold;
+  margin: 10px 0;
+  min-height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.info-bar {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  font-weight: bold;
+  color: #7f8c8d;
+}
+
+/* Estados Visuais */
+.working {
+  border-color: var(--success);
+  color: var(--success);
+}
+.resting {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.session-rest {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.preparing {
+  border-color: #f1c40f;
+  color: #f1c40f;
+}
